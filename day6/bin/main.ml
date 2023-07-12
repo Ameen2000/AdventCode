@@ -9,12 +9,13 @@ let solver input =
     match lst with
     | [] -> count
     | _ :: t ->
-        let code = List.take lst take in
-        if List.contains_dup code ~compare:Char.compare then
-          aux t (count + 1) take
-        else count
+      let code = List.take lst take in
+      if List.contains_dup code ~compare:Char.compare
+      then aux t (count + 1) take
+      else count
   in
-  (aux lst 4 4, aux lst 14 14)
+  aux lst 4 4, aux lst 14 14
+;;
 
 (* Execution block *)
 let () =
@@ -22,3 +23,4 @@ let () =
   let answer = solver input in
   Printf.printf "Answer to part 1 is: %d\n" (fst answer);
   Printf.printf "Answer to part 2 is: %d\n" (snd answer)
+;;
